@@ -41,6 +41,7 @@
 <div class="btn" onclick="callProgress()">call progress <span id='progress'></span></div>
 <div class="btn" onclick="hasNativeMethod('xx')">hasNativeMethod("xx")</div>
 <div class="btn" onclick="hasNativeMethod('testSyn')">hasNativeMethod("testSyn")</div>
+<div class="btn" onclick="hasNativeMethodException('noMethod')">hasNativeMethodException('noMethod')</div>
 
 <script>
 
@@ -100,6 +101,14 @@
 
     function hasNativeMethod(name) {
         alert(dsBridge.hasNativeMethod(name))
+    }
+
+    function hasNativeMethodException(name) {
+        try {
+            dsBridge.call("noMethod")
+        } catch (ex) {
+            alert('noMethod: ' + ex)
+        }
     }
 
 

@@ -122,14 +122,15 @@ public class DWebView extends WebView {
                 try {
                     method = cls.getMethod(methodName, new Class[]{Object.class});
                 } catch (Exception ex) {
-
+                    PrintDebugInfo(ex.getMessage());
                 }
             }
 
             if (method == null) {
                 error = "Not find method \"" + methodName + "\" implementation! please check if the  signature or namespace of the method is right ";
                 PrintDebugInfo(error);
-                return ret.toString();
+                throw new RuntimeException(error);
+//                return ret.toString();
             }
 
 
